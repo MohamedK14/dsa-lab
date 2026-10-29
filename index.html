@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Lab</title>
+
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- <script defer src="js/script.js"></script> -->
+
+
+    <style>
+        body {
+            background-color: #0f1419;
+            color: #e6edf3;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .card {
+            background: #171d25;
+            border: 1px solid #2b3644;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #4aa3ff;
+        }
+
+        h1,
+        body>p {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to DSA Lab</h1>
+    <p>Learn data structures by doing.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Array</h3>
+            <p>Numbered slots that grow when full.</p>
+        </div>
+
+        <div class="card">
+            <h3>Stack</h3>
+            <p>Last in, first out. Like a pile of plates.</p>
+        </div>
+
+        <div class="card">
+            <h3>Queue</h3>
+            <p>First in, first out. Like a line at a shop.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
