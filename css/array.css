@@ -33,3 +33,14 @@ body:has(#array-page:target) .cards {
     border: 2px solid #4aa3ff;
     background: rgba(74, 163, 255, 0.14);
 }
+
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#msg {
+    min-height: 26px;
+    margin: 12px 0;
+}
