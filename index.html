@@ -14,6 +14,10 @@
         body {
             background-color: #0f1419;
             color: #e6edf3;
+            font-family: system-ui, sans-serif;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px;
         }
 
         .cards {
@@ -24,10 +28,13 @@
         }
 
         .card {
+            display: block;
             background: #171d25;
             border: 1px solid #2b3644;
             border-radius: 12px;
             padding: 20px;
+            text-decoration: none;
+            color: inherit;
             transition: transform 0.15s, border-color 0.15s;
         }
 
@@ -40,6 +47,53 @@
         body>p {
             text-align: center;
         }
+
+        #array-page {
+            display: none;
+        }
+
+        #array-page:target {
+            display: block;
+        }
+
+        body:has(#array-page:target) .cards {
+            display: none;
+        }
+
+        #slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .slot {
+            width: 54px;
+            height: 54px;
+            border: 2px dashed #2b3644;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .slot.filled {
+            border: 2px solid #4aa3ff;
+            background: rgba(74, 163, 255, 0.14);
+        }
+
+        button {
+            background: #4aa3ff;
+            color: #06121f;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -48,10 +102,10 @@
     <p>Learn data structures by doing.</p>
 
     <div class="cards">
-        <div class="card">
+        <a href="#array" class="card">
             <h3>Array</h3>
             <p>Numbered slots that grow when full.</p>
-        </div>
+        </a>
 
         <div class="card">
             <h3>Stack</h3>
@@ -64,6 +118,47 @@
         </div>
     </div>
 
+    <section id="array-page">
+        <a href="#">← All structures</a>
+        <h2>Dynamic Array</h2>
+        <p>A row of numbered slots. When it fills up, it grows.</p>
+
+        <p>Size: <b id="size">0</b> &nbsp; Capacity: <b id="cap">0</b></p>
+        <div id="slots"></div>
+        <button id="push">push_back</button>
+    </section>
+
+
+    <script>
+        let data = [];
+        let capacity = 0;
+        let next = 1;
+
+        function draw() {
+            document.getElementById("size").textContent = data.length;
+            document.getElementById("cap").textContent = capacity;
+            let html = "";
+            for (let i = 0; i < capacity; i++) {
+                if (i < data.length) {
+                    html += `<div class="slot filled">${data[i]}</div>`;
+                } else {
+                    html += `<div class="slot"></div>`;
+                }
+            }
+            document.getElementById("slots").innerHTML = html;
+        }
+
+        document.getElementById("push").onclick = function () {
+            if (data.length === capacity) {
+                capacity = capacity === 0 ? 1 : capacity * 2;
+            }
+            data.push(next);
+            next++;
+            draw();
+        };
+
+        draw();
+    </script>
 </body>
 
 </html>
