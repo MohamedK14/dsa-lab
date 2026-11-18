@@ -54,3 +54,9 @@ document.getElementById("reset").onclick = function () {
 };
 
 draw();
+
+document.getElementById("array-info-btn").onclick = function () {
+    const panel = document.getElementById("array-info");
+    panel.hidden = !panel.hidden;
+    this.setAttribute("aria-expanded", String(!panel.hidden));
+};

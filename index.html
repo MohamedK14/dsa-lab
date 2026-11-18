@@ -34,9 +34,22 @@
         </div>
     </div>
 
+    <section id="did-you-know">
+        <h3>Did you know?</h3>
+        <p id="dyk-text"></p>
+        <button id="dyk-next" class="ghost">Another one</button>
+    </section>
+
     <section id="array-page">
         <a href="#">← All structures</a>
-        <h2>Dynamic Array</h2>
+        <h2>Dynamic Array <button class="info-btn" id="array-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="array-info" hidden>
+            <ul>
+                <li>In a real array, a removed slot isn't erased, just ignored. The old value stays in memory until something overwrites it.</li>
+                <li>When the array is full, it can't grow in place. A bigger one is allocated, everything is copied over, and the old one is freed.</li>
+                <li>Doubling the capacity keeps full copies rare, so push_back averages out to O(1).</li>
+            </ul>
+        </div>
         <p>A row of numbered slots. When it fills up, it grows.</p>
 
         <p>Size: <b id="size">0</b> &nbsp; Capacity: <b id="cap">0</b></p>
@@ -50,6 +63,8 @@
     </section>
 
 
+    <script src="js/facts.js"></script>
+    <script src="js/home.js"></script>
     <script src="js/array.js"></script>
 </body>
 

@@ -20,18 +20,21 @@ body:has(#array-page:target) .cards {
 .slot {
     width: 54px;
     height: 54px;
-    border: 2px dashed #2b3644;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     font-weight: 600;
+
+    border: 2px dashed #7a8aa0;
+    background: #222b38;
 }
 
 .slot.filled {
     border: 2px solid #4aa3ff;
-    background: rgba(74, 163, 255, 0.14);
+    background: rgba(74, 163, 255, 0.35);
+    color: #ffffff;
 }
 
 .controls {
@@ -43,4 +46,8 @@ body:has(#array-page:target) .cards {
 #msg {
     min-height: 26px;
     margin: 12px 0;
+}
+
+body:has(#array-page:target) #did-you-know {
+    display: none;
 }

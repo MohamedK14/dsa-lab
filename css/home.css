@@ -20,3 +20,16 @@
     transform: translateY(-3px);
     border-color: #4aa3ff;
 }
+
+#did-you-know {
+    margin-top: 32px;
+    padding: 16px 20px;
+    background: #171d25;
+    border: 1px solid #2b3644;
+    border-left: 4px solid #4aa3ff;
+    border-radius: 8px;
+}
+
+#did-you-know h3 {
+    margin: 0 0 8px;
+}
