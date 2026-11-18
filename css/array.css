@@ -1,0 +1,35 @@
+#array-page {
+    display: none;
+}
+
+#array-page:target {
+    display: block;
+}
+
+body:has(#array-page:target) .cards {
+    display: none;
+}
+
+#slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.slot {
+    width: 54px;
+    height: 54px;
+    border: 2px dashed #2b3644;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.slot.filled {
+    border: 2px solid #4aa3ff;
+    background: rgba(74, 163, 255, 0.14);
+}

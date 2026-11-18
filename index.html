@@ -6,95 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Lab</title>
 
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <!-- <script defer src="js/script.js"></script> -->
-
-
-    <style>
-        body {
-            background-color: #0f1419;
-            color: #e6edf3;
-            font-family: system-ui, sans-serif;
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .card {
-            display: block;
-            background: #171d25;
-            border: 1px solid #2b3644;
-            border-radius: 12px;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.15s, border-color 0.15s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: #4aa3ff;
-        }
-
-        h1,
-        body>p {
-            text-align: center;
-        }
-
-        #array-page {
-            display: none;
-        }
-
-        #array-page:target {
-            display: block;
-        }
-
-        body:has(#array-page:target) .cards {
-            display: none;
-        }
-
-        #slots {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 20px 0;
-        }
-
-        .slot {
-            width: 54px;
-            height: 54px;
-            border: 2px dashed #2b3644;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .slot.filled {
-            border: 2px solid #4aa3ff;
-            background: rgba(74, 163, 255, 0.14);
-        }
-
-        button {
-            background: #4aa3ff;
-            color: #06121f;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 16px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/array.css">
 </head>
 
 <body>
@@ -102,7 +16,7 @@
     <p>Learn data structures by doing.</p>
 
     <div class="cards">
-        <a href="#array" class="card">
+        <a href="#array-page" class="card">
             <h3>Array</h3>
             <p>Numbered slots that grow when full.</p>
         </a>
@@ -110,11 +24,13 @@
         <div class="card">
             <h3>Stack</h3>
             <p>Last in, first out. Like a pile of plates.</p>
+            <small>Coming soon</small>
         </div>
 
         <div class="card">
             <h3>Queue</h3>
             <p>First in, first out. Like a line at a shop.</p>
+            <small>Coming soon</small>
         </div>
     </div>
 
@@ -129,36 +45,7 @@
     </section>
 
 
-    <script>
-        let data = [];
-        let capacity = 0;
-        let next = 1;
-
-        function draw() {
-            document.getElementById("size").textContent = data.length;
-            document.getElementById("cap").textContent = capacity;
-            let html = "";
-            for (let i = 0; i < capacity; i++) {
-                if (i < data.length) {
-                    html += `<div class="slot filled">${data[i]}</div>`;
-                } else {
-                    html += `<div class="slot"></div>`;
-                }
-            }
-            document.getElementById("slots").innerHTML = html;
-        }
-
-        document.getElementById("push").onclick = function () {
-            if (data.length === capacity) {
-                capacity = capacity === 0 ? 1 : capacity * 2;
-            }
-            data.push(next);
-            next++;
-            draw();
-        };
-
-        draw();
-    </script>
+    <script src="js/array.js"></script>
 </body>
 
 </html>
