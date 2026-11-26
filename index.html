@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/stack.css">
     <link rel="stylesheet" href="css/queue.css">
     <link rel="stylesheet" href="css/linked-list.css">
+    <link rel="stylesheet" href="css/binary-tree.css">
 </head>
 
 <body>
@@ -40,11 +41,10 @@
             <p>A chain of nodes, each pointing to the next.</p>
         </a>
 
-        <div class="card">
+        <a href="#binary-tree-page" class="card">
             <h3>Binary Tree</h3>
             <p>Each node has up to two children.</p>
-            <small>Coming soon</small>
-        </div>
+        </a>
 
         <div class="card">
             <h3>Binary Search Tree</h3>
@@ -177,6 +177,42 @@
         </div>
     </section>
 
+    <section id="binary-tree-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Binary Tree <button class="info-btn" id="bt-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="bt-info" hidden>
+            <ul>
+                <li>Every traversal visits each node exactly once, so it takes O(n) time.</li>
+                <li>Preorder, inorder and postorder go deep first. Level-order goes row by row and uses a queue.</li>
+                <li>A general binary tree has no ordering rule, so finding a value can mean checking every node: O(n). Inserting here also scans for the first free spot, O(n).</li>
+            </ul>
+        </div>
+        <p>A tree where every node has at most two children, called left and right.</p>
+        <aside class="analogy">
+            <h3>Think of it like a family tree</h3>
+            <p>One person sits at the top. Under them are up to two children, who can have up to two children of their own. Each person hangs from exactly one parent. A traversal is a way of visiting every relative once, and the order you choose decides who you greet first.</p>
+        </aside>
+
+        <p>Nodes: <b id="bt-size">0</b> &nbsp; Height: <b id="bt-height">0</b></p>
+        <div class="tree-box">
+            <p class="empty" id="bt-empty">The tree is empty.</p>
+            <svg id="bt-svg" role="img" aria-label="Binary tree drawing"></svg>
+        </div>
+        <p id="bt-msg" class="msg">Insert a value or press Random fill.</p>
+        <div class="controls">
+            <input type="number" id="bt-value" placeholder="Number" aria-label="Value to insert">
+            <button id="bt-insert">insert</button>
+            <button id="bt-random">Random fill</button>
+            <button id="bt-reset" class="ghost">Reset</button>
+        </div>
+        <div class="controls">
+            <button id="bt-preorder">preorder</button>
+            <button id="bt-inorder">inorder</button>
+            <button id="bt-postorder">postorder</button>
+            <button id="bt-levelorder">level-order</button>
+        </div>
+    </section>
+
 
     <script src="js/facts.js"></script>
     <script src="js/home.js"></script>
@@ -185,6 +221,8 @@
     <script src="js/stack.js"></script>
     <script src="js/queue.js"></script>
     <script src="js/linked-list.js"></script>
+    <script src="js/tree-draw.js"></script>
+    <script src="js/binary-tree.js"></script>
 </body>
 
 </html>

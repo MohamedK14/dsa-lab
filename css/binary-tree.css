@@ -1,0 +1,5 @@
+/* Tree drawing styles are shared with the search tree, so they live in base.css. */
+
+#binary-tree-page .controls+.controls {
+    margin-top: 10px;
+}

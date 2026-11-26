@@ -13,5 +13,7 @@ const facts = [
     "Breadth-first search explores a tree or graph level by level, and it uses a queue to remember who to visit next.",
     "A circular buffer reuses the same slots in a loop, so a queue never has to shift its items forward.",
     "A linked list can add an item at the front in O(1), because only one pointer has to change.",
-    "Music players and photo viewers can use a doubly linked list, where each item points both to the next one and the previous one."
+    "Music players and photo viewers can use a doubly linked list, where each item points both to the next one and the previous one.",
+    "A binary tree with 20 full levels holds over a million nodes, because each level can hold twice as many as the one above.",
+    "Computers often store expressions like (2 + 3) * 4 as trees, and a postorder traversal evaluates them."
 ];
