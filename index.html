@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/array.css">
     <link rel="stylesheet" href="css/stack.css">
+    <link rel="stylesheet" href="css/queue.css">
 </head>
 
 <body>
@@ -28,11 +29,10 @@
             <p>Last in, first out. Like a pile of plates.</p>
         </a>
 
-        <div class="card">
+        <a href="#queue-page" class="card">
             <h3>Queue</h3>
             <p>First in, first out. Like a line at a shop.</p>
-            <small>Coming soon</small>
-        </div>
+        </a>
 
         <div class="card">
             <h3>Linked List</h3>
@@ -120,12 +120,41 @@
         </div>
     </section>
 
+    <section id="queue-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Queue <button class="info-btn" id="queue-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="queue-info" hidden>
+            <ul>
+                <li>enqueue adds at the back and dequeue removes from the front, so the first one in is the first one out (FIFO). Looking at the front is O(1).</li>
+                <li>On a simple array, dequeue is O(n): every item shifts one slot forward. A circular buffer fixes this by moving a "front" index around a ring of slots instead, so dequeue becomes O(1).</li>
+                <li>Queues run print jobs, task schedulers, keyboard buffers and breadth-first search (the level-order traversal on the tree pages).</li>
+            </ul>
+        </div>
+        <p>A line where you join at the back and leave from the front. First in, first out (FIFO).</p>
+        <aside class="analogy">
+            <h3>Think of it like a line at a shop</h3>
+            <p>New customers join the end of the line. The cashier always serves whoever is at the front, the person who has waited longest. Nobody cuts in, and nobody leaves from the middle. When one person is served, everyone behind them takes a step forward.</p>
+        </aside>
+
+        <p>Size: <b id="queue-size">0</b> &nbsp; Front: <b id="queue-front">none</b></p>
+        <div id="queue-line"></div>
+        <p id="queue-msg" class="msg">Type a number and press enqueue. Leave it empty for a random one.</p>
+        <div class="controls">
+            <input type="number" id="queue-value" placeholder="Number" aria-label="Value to enqueue">
+            <button id="queue-enqueue">enqueue</button>
+            <button id="queue-dequeue">dequeue</button>
+            <button id="queue-peek">front</button>
+            <button id="queue-reset" class="ghost">Reset</button>
+        </div>
+    </section>
+
 
     <script src="js/facts.js"></script>
     <script src="js/home.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/array.js"></script>
     <script src="js/stack.js"></script>
+    <script src="js/queue.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,76 @@
+#queue-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px;
+    min-height: 82px;
+    margin: 20px 0;
+}
+
+.person {
+    position: relative;
+    width: 54px;
+    height: 54px;
+    margin-top: 24px;
+    border: 2px solid #4aa3ff;
+    border-radius: 8px;
+    background: rgba(74, 163, 255, 0.35);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.person.new {
+    animation: person-join 0.25s ease-out;
+}
+
+.person.shift {
+    animation: person-step 0.3s ease-out;
+}
+
+.person.peek {
+    border-color: #3ddc97;
+    background: rgba(61, 220, 151, 0.35);
+}
+
+.q-label {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    color: #3ddc97;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#queue-line .empty {
+    align-self: center;
+}
+
+@keyframes person-join {
+    from {
+        transform: translateX(24px);
+        opacity: 0;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes person-step {
+    from {
+        transform: translateX(62px);
+    }
+
+    to {
+        transform: none;
+    }
+}

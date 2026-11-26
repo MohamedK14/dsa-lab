@@ -9,5 +9,7 @@ const facts = [
     "Quick sort is usually the fastest in practice, but with bad pivots its worst case is O(n²).",
     "An array is like a classroom with a fixed number of desks. When it fills up, everyone moves to a bigger room, and that move is what a resize does.",
     "Your browser's back button is a stack: each page you visit is pushed, and back pops the latest one.",
-    "Many calculators use a stack to work out expressions like 3 + 4 × 2 in the right order."
+    "Many calculators use a stack to work out expressions like 3 + 4 × 2 in the right order.",
+    "Breadth-first search explores a tree or graph level by level, and it uses a queue to remember who to visit next.",
+    "A circular buffer reuses the same slots in a loop, so a queue never has to shift its items forward."
 ];
