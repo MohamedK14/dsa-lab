@@ -1,0 +1,115 @@
+/* Drawing on the left, queue or stack beside it. On narrow screens the panel
+   moves underneath. */
+.graph-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.graph-drawing {
+    flex: 1 1 280px;
+    max-width: 420px;
+    min-width: 0;
+}
+
+.graph-drawing svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.graph-side {
+    flex: 1 1 180px;
+    max-width: 260px;
+    background: #171d25;
+    border: 1px solid #2b3644;
+    border-radius: 8px;
+    padding: 4px 16px 12px;
+}
+
+.graph-side h3 {
+    margin: 10px 0 8px;
+    font-size: 15px;
+}
+
+#graph-waiting {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 10px;
+    padding: 0;
+    min-height: 34px;
+    list-style: none;
+}
+
+#graph-waiting li:not(.empty) {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ffb454;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.graph-edge {
+    stroke: #4a5565;
+    stroke-width: 2;
+}
+
+.graph-edge.used {
+    stroke: #3ddc97;
+    stroke-width: 4;
+}
+
+.graph-node circle {
+    fill: #22405f;
+    stroke: #4aa3ff;
+    stroke-width: 2;
+}
+
+.graph-node text {
+    fill: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.graph-node.waiting circle {
+    stroke: #ffb454;
+    stroke-width: 3;
+    stroke-dasharray: 5 3;
+}
+
+.graph-node.current circle {
+    fill: #6b4a1f;
+    stroke: #ffb454;
+    stroke-width: 5;
+}
+
+.graph-node.visited circle {
+    fill: #17503a;
+    stroke: #3ddc97;
+}
+
+#graph-page select {
+    background: #171d25;
+    color: #e6edf3;
+    border: 1px solid #2b3644;
+    border-radius: 8px;
+    padding: 9px 10px;
+    font-size: 15px;
+    min-width: 62px;
+}
+
+#graph-page select:disabled {
+    opacity: 0.45;
+}
+
+#graph-page .controls+.controls {
+    margin-top: 10px;
+}

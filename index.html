@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/sorting.css">
     <link rel="stylesheet" href="css/avl.css">
     <link rel="stylesheet" href="css/red-black.css">
+    <link rel="stylesheet" href="css/graph.css">
 </head>
 
 <body>
@@ -68,6 +69,11 @@
         <a href="#red-black-page" class="card">
             <h3>Red-Black Tree</h3>
             <p>Colours and rotations keep it balanced.</p>
+        </a>
+
+        <a href="#graph-page" class="card">
+            <h3>Graph</h3>
+            <p>Nodes joined by edges, explored with BFS and DFS.</p>
         </a>
     </div>
 
@@ -345,6 +351,54 @@
         </div>
     </section>
 
+    <section id="graph-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Graph <button class="info-btn" id="graph-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="graph-info" hidden>
+            <ul>
+                <li>With a list of neighbours for each node, BFS and DFS both take O(V + E) time, for V nodes and E edges.</li>
+                <li>BFS (breadth-first) uses a queue and explores nearby nodes first, so it finds routes with the fewest edges.</li>
+                <li>DFS (depth-first) uses a stack and follows one route as far as it can before backing up. It is useful for mazes and for finding loops.</li>
+            </ul>
+        </div>
+        <p>A set of nodes joined by edges. Any node can connect to any other.</p>
+        <aside class="analogy">
+            <h3>Think of it like a map of cities and roads</h3>
+            <p>Each node is a city and each edge is a road between two cities. Exploring with BFS is like visiting every city one road away, then every city two roads away. DFS is like driving down one road after another until you reach a dead end, then going back to try a different turn.</p>
+        </aside>
+
+        <p>Nodes: <b id="graph-nodes">0</b> &nbsp; Edges: <b id="graph-edges">0</b></p>
+        <div class="graph-layout">
+            <div class="graph-drawing">
+                <p class="empty" id="graph-empty">The graph is empty.</p>
+                <svg id="graph-svg" viewBox="0 0 360 360" role="img" aria-label="Graph drawing"></svg>
+            </div>
+            <div class="graph-side">
+                <h3 id="graph-waiting-title">Queue or stack</h3>
+                <ul id="graph-waiting"></ul>
+                <small>Visited: <span id="graph-order">none</span></small>
+            </div>
+        </div>
+        <p id="graph-msg" class="msg">Add nodes and edges, or press Random graph.</p>
+        <div class="controls">
+            <button id="graph-add-node">Add node</button>
+            <label for="graph-from">Edge</label>
+            <select id="graph-from" aria-label="Edge from node"></select>
+            <select id="graph-to" aria-label="Edge to node"></select>
+            <button id="graph-add-edge">Add edge</button>
+        </div>
+        <div class="controls">
+            <label for="graph-start">Start</label>
+            <select id="graph-start"></select>
+            <button id="graph-bfs">BFS</button>
+            <button id="graph-dfs">DFS</button>
+        </div>
+        <div class="controls">
+            <button id="graph-random">Random graph</button>
+            <button id="graph-reset" class="ghost">Reset</button>
+        </div>
+    </section>
+
     <section id="sorting-page" class="page">
         <a href="#">← All structures</a>
         <h2>Sorting <button class="info-btn" id="sort-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
@@ -412,6 +466,8 @@
     <script src="js/avl.js"></script>
     <script src="js/red-black-logic.js"></script>
     <script src="js/red-black.js"></script>
+    <script src="js/graph-logic.js"></script>
+    <script src="js/graph.js"></script>
 </body>
 
 </html>

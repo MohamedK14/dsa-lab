@@ -23,5 +23,7 @@ const facts = [
     "The AVL tree is named after its inventors, Adelson-Velsky and Landis, who published it in 1962.",
     "An AVL tree holding a million values is never more than about 29 levels tall.",
     "In a Red-Black tree, the longest path from the root is never more than twice as long as the shortest one.",
-    "Java's TreeMap and most C++ versions of std::map are built on Red-Black trees."
+    "Java's TreeMap and most C++ versions of std::map are built on Red-Black trees.",
+    "Graph theory began in 1736, when Euler showed you can't walk across all seven bridges of Königsberg exactly once each.",
+    "Social networks, road maps and web links are all graphs: things joined by connections."
 ];
