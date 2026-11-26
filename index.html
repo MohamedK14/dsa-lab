@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/array.css">
+    <link rel="stylesheet" href="css/stack.css">
 </head>
 
 <body>
@@ -22,15 +23,38 @@
             <p>Numbered slots that grow when full.</p>
         </a>
 
-        <div class="card">
+        <a href="#stack-page" class="card">
             <h3>Stack</h3>
             <p>Last in, first out. Like a pile of plates.</p>
-            <small>Coming soon</small>
-        </div>
+        </a>
 
         <div class="card">
             <h3>Queue</h3>
             <p>First in, first out. Like a line at a shop.</p>
+            <small>Coming soon</small>
+        </div>
+
+        <div class="card">
+            <h3>Linked List</h3>
+            <p>A chain of nodes, each pointing to the next.</p>
+            <small>Coming soon</small>
+        </div>
+
+        <div class="card">
+            <h3>Binary Tree</h3>
+            <p>Each node has up to two children.</p>
+            <small>Coming soon</small>
+        </div>
+
+        <div class="card">
+            <h3>Binary Search Tree</h3>
+            <p>Smaller values go left, bigger go right.</p>
+            <small>Coming soon</small>
+        </div>
+
+        <div class="card">
+            <h3>Sorting</h3>
+            <p>Watch five sorting algorithms put bars in order.</p>
             <small>Coming soon</small>
         </div>
     </div>
@@ -60,7 +84,7 @@
 
         <p>Size: <b id="size">0</b> &nbsp; Capacity: <b id="cap">0</b></p>
         <div id="slots"></div>
-        <p id="msg">Press push_back to add a number.</p>
+        <p id="msg" class="msg">Press push_back to add a number.</p>
         <div class="controls">
             <button id="push">push_back</button>
             <button id="pop">pop_back</button>
@@ -68,10 +92,40 @@
         </div>
     </section>
 
+    <section id="stack-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Stack <button class="info-btn" id="stack-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="stack-info" hidden>
+            <ul>
+                <li>push, pop and top only ever touch the top, so each one takes O(1) time.</li>
+                <li>A stack is usually built on a dynamic array (the top is the last slot) or on a linked list.</li>
+                <li>Stacks power undo, the browser's back button, bracket matching, and the call stack that runs every program.</li>
+            </ul>
+        </div>
+        <p>A pile where you can only add or remove at the top. Last in, first out (LIFO).</p>
+        <aside class="analogy">
+            <h3>Think of it like a pile of plates</h3>
+            <p>You put each clean plate on top of the pile, and when you need one you take it from the top too. The plate at the bottom went on first, but it's the last one you can reach. You never pull a plate out of the middle.</p>
+        </aside>
+
+        <p>Size: <b id="stack-size">0</b> &nbsp; Top: <b id="stack-top">none</b></p>
+        <div id="stack-pile"></div>
+        <p id="stack-msg" class="msg">Type a number and press push. Leave it empty for a random one.</p>
+        <div class="controls">
+            <input type="number" id="stack-value" placeholder="Number" aria-label="Value to push">
+            <button id="stack-push">push</button>
+            <button id="stack-pop">pop</button>
+            <button id="stack-peek">top</button>
+            <button id="stack-reset" class="ghost">Reset</button>
+        </div>
+    </section>
+
 
     <script src="js/facts.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/ui.js"></script>
     <script src="js/array.js"></script>
+    <script src="js/stack.js"></script>
 </body>
 
 </html>

@@ -7,5 +7,7 @@ const facts = [
     "A print queue is first in, first out: the first document sent is the first one printed.",
     "Merge sort always takes O(n log n), but it needs extra memory to merge.",
     "Quick sort is usually the fastest in practice, but with bad pivots its worst case is O(n²).",
-    "An array is like a classroom with a fixed number of desks. When it fills up, everyone moves to a bigger room, and that move is what a resize does."
+    "An array is like a classroom with a fixed number of desks. When it fills up, everyone moves to a bigger room, and that move is what a resize does.",
+    "Your browser's back button is a stack: each page you visit is pushed, and back pops the latest one.",
+    "Many calculators use a stack to work out expressions like 3 + 4 × 2 in the right order."
 ];

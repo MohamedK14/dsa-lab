@@ -75,3 +75,62 @@ button.ghost {
 body:has(.page:target) .home {
     display: none;
 }
+
+/* Shared page parts: analogy callout, buttons row, message line */
+
+.analogy {
+    background: #171d25;
+    border: 1px solid #2b3644;
+    border-left: 4px solid #ffb454;
+    border-radius: 8px;
+    padding: 4px 16px 14px;
+    margin: 16px 0;
+}
+
+.analogy h3 {
+    margin: 12px 0 6px;
+    color: #ffb454;
+}
+
+.analogy p {
+    margin: 0;
+    color: #c5cfdb;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.msg {
+    min-height: 26px;
+    margin: 12px 0;
+}
+
+.empty {
+    margin: 0;
+    color: #8b98a8;
+    font-style: italic;
+}
+
+input[type="number"] {
+    width: 96px;
+    background: #171d25;
+    color: #e6edf3;
+    border: 1px solid #2b3644;
+    border-radius: 8px;
+    padding: 9px 10px;
+    font-size: 15px;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4aa3ff;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}

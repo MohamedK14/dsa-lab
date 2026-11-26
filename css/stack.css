@@ -1,0 +1,56 @@
+#stack-pile {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 6px;
+    width: min(260px, 100%);
+    min-height: 60px;
+    margin: 20px 0;
+    padding: 10px 0;
+    border-bottom: 3px solid #4a5565;
+}
+
+.plate {
+    position: relative;
+    width: 150px;
+    height: 34px;
+    border: 2px solid #4aa3ff;
+    border-radius: 8px;
+    background: rgba(74, 163, 255, 0.35);
+    color: #ffffff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.plate.new {
+    animation: plate-drop 0.25s ease-out;
+}
+
+.plate.peek {
+    border-color: #3ddc97;
+    background: rgba(61, 220, 151, 0.35);
+}
+
+.top-arrow {
+    position: absolute;
+    left: 100%;
+    margin-left: 12px;
+    white-space: nowrap;
+    color: #3ddc97;
+    font-size: 14px;
+}
+
+@keyframes plate-drop {
+    from {
+        transform: translateY(-24px);
+        opacity: 0;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
