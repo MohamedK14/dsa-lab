@@ -1,0 +1,136 @@
+/* One colour per role. The bars and the legend share these. */
+#sorting-page {
+    --bar-default: #4aa3ff;
+    --bar-comparing: #ffb454;
+    --bar-moving: #ff6b81;
+    --bar-pivot: #b48cff;
+    --bar-done: #3ddc97;
+}
+
+#sort-bars {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    height: 220px;
+    margin: 20px 0 12px;
+    padding-top: 22px;
+    border-bottom: 3px solid #4a5565;
+}
+
+.bar-slot {
+    flex: 1;
+    min-width: 0;
+    max-width: 56px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.bar {
+    position: relative;
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    background: var(--bar-default);
+}
+
+.bar span {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+/* Later rules win, so an action colour shows over "in place". */
+.bar.done {
+    background: var(--bar-done);
+}
+
+.bar.pivot {
+    background: var(--bar-pivot);
+}
+
+.bar.comparing {
+    background: var(--bar-comparing);
+}
+
+.bar.moving {
+    background: var(--bar-moving);
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 0 0 12px;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    color: #c5cfdb;
+}
+
+.legend li::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 6px;
+    border-radius: 3px;
+    vertical-align: -1px;
+    background: var(--bar-default);
+}
+
+.legend .key-comparing::before {
+    background: var(--bar-comparing);
+}
+
+.legend .key-moving::before {
+    background: var(--bar-moving);
+}
+
+.legend .key-pivot::before {
+    background: var(--bar-pivot);
+}
+
+.legend .key-done::before {
+    background: var(--bar-done);
+}
+
+#sorting-page select {
+    background: #171d25;
+    color: #e6edf3;
+    border: 1px solid #2b3644;
+    border-radius: 8px;
+    padding: 9px 10px;
+    font-size: 15px;
+}
+
+#sorting-page select:disabled,
+#sorting-page input:disabled {
+    opacity: 0.45;
+}
+
+.sort-settings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #c5cfdb;
+}
+
+.sort-settings label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sort-settings input {
+    accent-color: #4aa3ff;
+}
+
+#sort-go {
+    min-width: 76px;
+}

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/linked-list.css">
     <link rel="stylesheet" href="css/binary-tree.css">
     <link rel="stylesheet" href="css/bst.css">
+    <link rel="stylesheet" href="css/sorting.css">
 </head>
 
 <body>
@@ -25,6 +26,11 @@
         <a href="#array-page" class="card">
             <h3>Array</h3>
             <p>Numbered slots that grow when full.</p>
+        </a>
+
+        <a href="#sorting-page" class="card">
+            <h3>Sorting</h3>
+            <p>Watch five sorting algorithms put bars in order.</p>
         </a>
 
         <a href="#stack-page" class="card">
@@ -51,12 +57,6 @@
             <h3>Binary Search Tree</h3>
             <p>Smaller values go left, bigger go right.</p>
         </a>
-
-        <div class="card">
-            <h3>Sorting</h3>
-            <p>Watch five sorting algorithms put bars in order.</p>
-            <small>Coming soon</small>
-        </div>
     </div>
 
     <section id="did-you-know">
@@ -251,6 +251,50 @@
         </div>
     </section>
 
+    <section id="sorting-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Sorting <button class="info-btn" id="sort-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="sort-info" hidden>
+            <ul>
+                <li>Bubble, insertion and selection sort take O(n²) time on average. Bubble and insertion sort drop to O(n) on data that is already sorted.</li>
+                <li>Merge sort always takes O(n log n) and needs O(n) extra memory.</li>
+                <li>Quick sort takes O(n log n) on average and O(n²) in the worst case, when the pivots are bad.</li>
+            </ul>
+        </div>
+        <p>Five ways to put numbers in order. Watch how differently they work.</p>
+        <aside class="analogy">
+            <h3>Think of it like lining people up by height</h3>
+            <p>You can let neighbours swap until nobody is out of order (bubble), slide each newcomer into the right spot (insertion), keep calling out the shortest person left (selection), merge two lines that are already sorted (merge), or pick one person and send shorter people to one side and taller to the other (quick).</p>
+        </aside>
+
+        <p>Comparisons: <b id="sort-comparisons">0</b> &nbsp; Swaps / moves: <b id="sort-moves">0</b></p>
+        <div id="sort-bars"></div>
+        <ul class="legend" aria-label="Colour legend">
+            <li>not sorted yet</li>
+            <li class="key-comparing">comparing</li>
+            <li class="key-moving">moving</li>
+            <li class="key-pivot">pivot</li>
+            <li class="key-done">in place</li>
+        </ul>
+        <p id="sort-msg" class="msg"></p>
+        <div class="controls">
+            <select id="sort-algo" aria-label="Sorting algorithm">
+                <option value="bubble">Bubble sort</option>
+                <option value="insertion">Insertion sort</option>
+                <option value="selection">Selection sort</option>
+                <option value="merge">Merge sort</option>
+                <option value="quick">Quick sort</option>
+            </select>
+            <button id="sort-go">Sort</button>
+            <button id="sort-shuffle">Shuffle</button>
+            <button id="sort-reset" class="ghost">Reset</button>
+        </div>
+        <div class="sort-settings">
+            <label>Size <input type="range" id="sort-count" min="5" max="15" value="10"> <b id="sort-count-label">10</b></label>
+            <label>Speed <input type="range" id="sort-speed" min="1" max="10" value="6"> <b id="sort-speed-label">6</b></label>
+        </div>
+    </section>
+
 
     <script src="js/facts.js"></script>
     <script src="js/home.js"></script>
@@ -262,6 +306,8 @@
     <script src="js/tree-draw.js"></script>
     <script src="js/binary-tree.js"></script>
     <script src="js/bst.js"></script>
+    <script src="js/algorithms.js"></script>
+    <script src="js/sorting.js"></script>
 </body>
 
 </html>

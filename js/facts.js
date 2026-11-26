@@ -17,5 +17,7 @@ const facts = [
     "A binary tree with 20 full levels holds over a million nodes, because each level can hold twice as many as the one above.",
     "Computers often store expressions like (2 + 3) * 4 as trees, and a postorder traversal evaluates them.",
     "In a balanced search tree with a million values, a search needs only about 20 comparisons.",
-    "Inserting already sorted values into a plain binary search tree turns it into a straight line. Self-balancing trees fix this."
+    "Inserting already sorted values into a plain binary search tree turns it into a straight line. Self-balancing trees fix this.",
+    "Insertion sort is slow on big random lists but very fast on lists that are already almost sorted.",
+    "Selection sort does many comparisons but very few swaps: at most one per item."
 ];
