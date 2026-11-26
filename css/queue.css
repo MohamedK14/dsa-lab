@@ -5,6 +5,10 @@
     gap: 8px;
     min-height: 82px;
     margin: 20px 0;
+    /* room for the "front · back" label, and clip the slide-in animations so
+       they never make the page scroll sideways on a phone */
+    padding: 0 12px;
+    overflow: hidden;
 }
 
 .person {
