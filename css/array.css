@@ -51,3 +51,22 @@ body:has(#array-page:target) .cards {
 body:has(#array-page:target) #did-you-know {
     display: none;
 }
+
+.analogy {
+    background: #171d25;
+    border: 1px solid #2b3644;
+    border-left: 4px solid #ffb454;
+    border-radius: 8px;
+    padding: 4px 16px 14px;
+    margin: 16px 0;
+}
+
+.analogy h3 {
+    margin: 12px 0 6px;
+    color: #ffb454;
+}
+
+.analogy p {
+    margin: 0;
+    color: #c5cfdb;
+}
