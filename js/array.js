@@ -1,3 +1,5 @@
+const ARRAY_MAX = 15; // keep the row short so the layout stays readable
+
 let data = [];
 let capacity = 0;
 let next = 1;
@@ -13,12 +15,19 @@ function draw() {
             html += `<div class="slot"></div>`;
         }
     }
+    if (capacity === 0) {
+        html = '<p class="empty">The array is empty. Capacity is 0, so there are no slots yet.</p>';
+    }
     document.getElementById("slots").innerHTML = html;
 }
 
 const msg = document.getElementById("msg");
 
 document.getElementById("push").onclick = function () {
+    if (data.length >= ARRAY_MAX) {
+        msg.textContent = `This demo stops at ${ARRAY_MAX} items. Pop one or press Reset.`;
+        return;
+    }
     let note;
     if (data.length === capacity) {
         const oldCap = capacity;
