@@ -185,3 +185,20 @@ button:disabled {
     stroke: #3ddc97;
     stroke-width: 4;
 }
+
+/* Links on the dark background, such as "← All structures" */
+
+.page>a {
+    display: inline-block;
+    color: #4aa3ff;
+    text-decoration: none;
+}
+
+.page>a:hover {
+    text-decoration: underline;
+}
+
+/* Keep some space above a page when the browser jumps to it */
+.page {
+    scroll-margin-top: 24px;
+}
