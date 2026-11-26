@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/bst.css">
     <link rel="stylesheet" href="css/sorting.css">
     <link rel="stylesheet" href="css/avl.css">
+    <link rel="stylesheet" href="css/red-black.css">
 </head>
 
 <body>
@@ -62,6 +63,11 @@
         <a href="#avl-page" class="card">
             <h3>AVL Tree</h3>
             <p>A search tree that keeps itself balanced.</p>
+        </a>
+
+        <a href="#red-black-page" class="card">
+            <h3>Red-Black Tree</h3>
+            <p>Colours and rotations keep it balanced.</p>
         </a>
     </div>
 
@@ -297,6 +303,48 @@
         </div>
     </section>
 
+    <section id="red-black-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Red-Black Tree <button class="info-btn" id="rb-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="rb-info" hidden>
+            <ul>
+                <li>The 5 rules:
+                    <ol>
+                        <li>Every node is red or black.</li>
+                        <li>The root is black.</li>
+                        <li>Empty spots below the leaves count as black.</li>
+                        <li>A red node never has a red child.</li>
+                        <li>From any node, every path down to an empty spot passes the same number of black nodes.</li>
+                    </ol>
+                </li>
+                <li>Those rules keep the height small, so search and insert take O(log n) time. So does delete, which this page leaves out.</li>
+                <li>Many standard libraries use it for sorted maps and sets, such as Java's TreeMap and most versions of C++ std::map.</li>
+            </ul>
+        </div>
+        <p>A search tree that colours its nodes red or black to stay balanced.</p>
+        <aside class="analogy">
+            <h3>Think of it like a club with strict seating rules</h3>
+            <p>Every member wears a red or a black badge. The head of the room wears black, two red badges may never sit directly one above the other, and every route to an empty chair must pass the same number of black badges. When a newcomer breaks a rule, members swap badges or change seats until the rules hold again.</p>
+        </aside>
+
+        <p>Nodes: <b id="rb-size">0</b> &nbsp; Height: <b id="rb-height">0</b> &nbsp; Black height: <b id="rb-black-height">0</b> &nbsp; Rotations: <b id="rb-rotations">0</b></p>
+        <div class="tree-box">
+            <p class="empty" id="rb-empty">The tree is empty.</p>
+            <svg id="rb-svg" role="img" aria-label="Red-Black tree drawing, each node marked R or B"></svg>
+        </div>
+        <p id="rb-msg" class="msg">Type a number and press insert, or try Insert sorted 1..7.</p>
+        <div class="controls">
+            <input type="number" id="rb-value" placeholder="Number" aria-label="Value to insert or search for">
+            <button id="rb-insert">insert</button>
+            <button id="rb-search">search</button>
+            <button id="rb-reset" class="ghost">Reset</button>
+        </div>
+        <div class="controls">
+            <button id="rb-random">Random fill</button>
+            <button id="rb-sorted">Insert sorted 1..7</button>
+        </div>
+    </section>
+
     <section id="sorting-page" class="page">
         <a href="#">← All structures</a>
         <h2>Sorting <button class="info-btn" id="sort-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
@@ -362,6 +410,8 @@
     <script src="js/tree-page.js"></script>
     <script src="js/avl-logic.js"></script>
     <script src="js/avl.js"></script>
+    <script src="js/red-black-logic.js"></script>
+    <script src="js/red-black.js"></script>
 </body>
 
 </html>

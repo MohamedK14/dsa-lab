@@ -1,0 +1,37 @@
+/* Shared tree styles are in base.css. Here the fill shows the node's colour,
+   and the outline shows what the animation is looking at. */
+
+#red-black-page .controls+.controls {
+    margin-top: 10px;
+}
+
+#red-black-page .info-panel ol {
+    margin: 4px 0;
+}
+
+#red-black-page .tree-node.red circle {
+    fill: #c0344d;
+    stroke: #ff8a9c;
+    stroke-width: 2;
+}
+
+#red-black-page .tree-node.black circle {
+    fill: #05070a;
+    stroke: #8b98a8;
+    stroke-width: 2;
+}
+
+#red-black-page .tree-node.visited circle {
+    stroke: #4aa3ff;
+    stroke-width: 4;
+}
+
+#red-black-page .tree-node.current circle {
+    stroke: #ffb454;
+    stroke-width: 5;
+}
+
+#red-black-page .tree-node.found circle {
+    stroke: #3ddc97;
+    stroke-width: 5;
+}
