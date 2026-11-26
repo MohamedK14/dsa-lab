@@ -11,5 +11,7 @@ const facts = [
     "Your browser's back button is a stack: each page you visit is pushed, and back pops the latest one.",
     "Many calculators use a stack to work out expressions like 3 + 4 × 2 in the right order.",
     "Breadth-first search explores a tree or graph level by level, and it uses a queue to remember who to visit next.",
-    "A circular buffer reuses the same slots in a loop, so a queue never has to shift its items forward."
+    "A circular buffer reuses the same slots in a loop, so a queue never has to shift its items forward.",
+    "A linked list can add an item at the front in O(1), because only one pointer has to change.",
+    "Music players and photo viewers can use a doubly linked list, where each item points both to the next one and the previous one."
 ];

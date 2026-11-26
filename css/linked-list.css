@@ -1,0 +1,107 @@
+#list-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 6px;
+    min-height: 50px;
+    margin: 20px 0;
+}
+
+.ll-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ll-node {
+    display: flex;
+    border: 2px solid #4aa3ff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ll-value,
+.ll-next {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ll-value {
+    min-width: 46px;
+    padding: 0 6px;
+    background: rgba(74, 163, 255, 0.35);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.ll-next {
+    width: 40px;
+    border-left: 2px solid #4aa3ff;
+    background: #171d25;
+    color: #8b98a8;
+    font-size: 12px;
+}
+
+.ll-node.new {
+    animation: ll-appear 0.3s ease-out;
+}
+
+.ll-node.visited {
+    border-color: #4a5565;
+    opacity: 0.6;
+}
+
+.ll-node.current {
+    border-color: #ffb454;
+    box-shadow: 0 0 0 3px rgba(255, 180, 84, 0.35);
+}
+
+.ll-node.found {
+    border-color: #3ddc97;
+    box-shadow: 0 0 0 3px rgba(61, 220, 151, 0.35);
+}
+
+.ll-node.found .ll-value {
+    background: rgba(61, 220, 151, 0.35);
+}
+
+.ll-arrow {
+    color: #8b98a8;
+    font-size: 20px;
+}
+
+.ll-label,
+.ll-null {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.ll-label {
+    color: #3ddc97;
+}
+
+.ll-null {
+    color: #8b98a8;
+    border: 2px dashed #4a5565;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+
+#list-chain .empty {
+    flex-basis: 100%;
+}
+
+@keyframes ll-appear {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}

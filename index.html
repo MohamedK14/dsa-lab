@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/array.css">
     <link rel="stylesheet" href="css/stack.css">
     <link rel="stylesheet" href="css/queue.css">
+    <link rel="stylesheet" href="css/linked-list.css">
 </head>
 
 <body>
@@ -34,11 +35,10 @@
             <p>First in, first out. Like a line at a shop.</p>
         </a>
 
-        <div class="card">
+        <a href="#linked-list-page" class="card">
             <h3>Linked List</h3>
             <p>A chain of nodes, each pointing to the next.</p>
-            <small>Coming soon</small>
-        </div>
+        </a>
 
         <div class="card">
             <h3>Binary Tree</h3>
@@ -148,6 +148,35 @@
         </div>
     </section>
 
+    <section id="linked-list-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Linked List <button class="info-btn" id="list-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="list-info" hidden>
+            <ul>
+                <li>push_front and pop_front only change the head pointer, so they take O(1) time.</li>
+                <li>This list only remembers its head, so push_back and search walk node by node and take O(n). Also storing a tail pointer would make push_back O(1).</li>
+                <li>Nodes can sit anywhere in memory. Nothing has to be copied for the list to grow, but you can't jump straight to the 5th item like you can in an array.</li>
+            </ul>
+        </div>
+        <p>A chain of nodes. Each one holds a value and points to the next.</p>
+        <aside class="analogy">
+            <h3>Think of it like a treasure hunt</h3>
+            <p>Each clue gives you something and tells you where to find the next clue. You only know where the first one is. To reach the fifth clue you must follow the first four. Adding a new first clue is easy: write on it where the old first clue is hidden. The last clue says "the end".</p>
+        </aside>
+
+        <p>Size: <b id="list-size">0</b> &nbsp; Head: <b id="list-head">NULL</b></p>
+        <div id="list-chain"></div>
+        <p id="list-msg" class="msg">Type a number and press push_front or push_back. Leave it empty for a random one.</p>
+        <div class="controls">
+            <input type="number" id="list-value" placeholder="Number" aria-label="Value to add or search for">
+            <button id="list-push-front">push_front</button>
+            <button id="list-push-back">push_back</button>
+            <button id="list-pop-front">pop_front</button>
+            <button id="list-search">search</button>
+            <button id="list-reset" class="ghost">Reset</button>
+        </div>
+    </section>
+
 
     <script src="js/facts.js"></script>
     <script src="js/home.js"></script>
@@ -155,6 +184,7 @@
     <script src="js/array.js"></script>
     <script src="js/stack.js"></script>
     <script src="js/queue.js"></script>
+    <script src="js/linked-list.js"></script>
 </body>
 
 </html>
