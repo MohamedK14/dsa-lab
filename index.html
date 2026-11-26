@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/queue.css">
     <link rel="stylesheet" href="css/linked-list.css">
     <link rel="stylesheet" href="css/binary-tree.css">
+    <link rel="stylesheet" href="css/bst.css">
 </head>
 
 <body>
@@ -46,11 +47,10 @@
             <p>Each node has up to two children.</p>
         </a>
 
-        <div class="card">
+        <a href="#bst-page" class="card">
             <h3>Binary Search Tree</h3>
             <p>Smaller values go left, bigger go right.</p>
-            <small>Coming soon</small>
-        </div>
+        </a>
 
         <div class="card">
             <h3>Sorting</h3>
@@ -213,6 +213,44 @@
         </div>
     </section>
 
+    <section id="bst-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>Binary Search Tree <button class="info-btn" id="bst-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="bst-info" hidden>
+            <ul>
+                <li>insert, search, delete, find min and find max each follow one path down the tree: O(log n) on average.</li>
+                <li>Worst case O(n): if values arrive in sorted order, the tree degenerates into a list. Try "Insert sorted 1..7".</li>
+                <li>An in-order traversal visits every node once, O(n), and returns the values in sorted order.</li>
+            </ul>
+        </div>
+        <p>A binary tree that keeps smaller values on the left and bigger values on the right.</p>
+        <aside class="analogy">
+            <h3>Think of it like a guessing game</h3>
+            <p>Someone picks a number and, after each guess, tells you "lower" or "higher". Every answer rules out a whole group of numbers at once. Looking up a name in a phone book works the same way: open it somewhere, then go earlier or later. Each node in this tree is one guess.</p>
+        </aside>
+
+        <p>Nodes: <b id="bst-size">0</b> &nbsp; Height: <b id="bst-height">0</b></p>
+        <div class="tree-box">
+            <p class="empty" id="bst-empty">The tree is empty.</p>
+            <svg id="bst-svg" role="img" aria-label="Binary search tree drawing"></svg>
+        </div>
+        <p id="bst-msg" class="msg">Type a number and press insert, or press Random fill.</p>
+        <div class="controls">
+            <input type="number" id="bst-value" placeholder="Number" aria-label="Value to insert, search for or delete">
+            <button id="bst-insert">insert</button>
+            <button id="bst-search">search</button>
+            <button id="bst-delete">delete</button>
+            <button id="bst-reset" class="ghost">Reset</button>
+        </div>
+        <div class="controls">
+            <button id="bst-min">find min</button>
+            <button id="bst-max">find max</button>
+            <button id="bst-inorder">in-order</button>
+            <button id="bst-random">Random fill</button>
+            <button id="bst-sorted">Insert sorted 1..7</button>
+        </div>
+    </section>
+
 
     <script src="js/facts.js"></script>
     <script src="js/home.js"></script>
@@ -223,6 +261,7 @@
     <script src="js/linked-list.js"></script>
     <script src="js/tree-draw.js"></script>
     <script src="js/binary-tree.js"></script>
+    <script src="js/bst.js"></script>
 </body>
 
 </html>

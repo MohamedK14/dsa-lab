@@ -1,0 +1,5 @@
+/* Tree drawing styles are shared with the binary tree, so they live in base.css. */
+
+#bst-page .controls+.controls {
+    margin-top: 10px;
+}

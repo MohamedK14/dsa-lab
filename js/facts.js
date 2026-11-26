@@ -15,5 +15,7 @@ const facts = [
     "A linked list can add an item at the front in O(1), because only one pointer has to change.",
     "Music players and photo viewers can use a doubly linked list, where each item points both to the next one and the previous one.",
     "A binary tree with 20 full levels holds over a million nodes, because each level can hold twice as many as the one above.",
-    "Computers often store expressions like (2 + 3) * 4 as trees, and a postorder traversal evaluates them."
+    "Computers often store expressions like (2 + 3) * 4 as trees, and a postorder traversal evaluates them.",
+    "In a balanced search tree with a million values, a search needs only about 20 comparisons.",
+    "Inserting already sorted values into a plain binary search tree turns it into a straight line. Self-balancing trees fix this."
 ];

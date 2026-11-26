@@ -61,7 +61,7 @@ function drawTree(svg, root, marks) {
     // Never larger than its natural size, and never squeezed so small that the
     // numbers become unreadable (the box around it scrolls instead).
     svg.style.maxWidth = `${width}px`;
-    svg.style.minWidth = `${Math.min(width, 440)}px`;
+    svg.style.minWidth = `${Math.min(Math.round(width * 0.75), 440)}px`;
     // Lines first so the circles are drawn on top of them.
     svg.innerHTML = lines + circles;
     keepInView(svg, root);
