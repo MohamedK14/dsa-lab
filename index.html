@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/binary-tree.css">
     <link rel="stylesheet" href="css/bst.css">
     <link rel="stylesheet" href="css/sorting.css">
+    <link rel="stylesheet" href="css/avl.css">
 </head>
 
 <body>
@@ -56,6 +57,11 @@
         <a href="#bst-page" class="card">
             <h3>Binary Search Tree</h3>
             <p>Smaller values go left, bigger go right.</p>
+        </a>
+
+        <a href="#avl-page" class="card">
+            <h3>AVL Tree</h3>
+            <p>A search tree that keeps itself balanced.</p>
         </a>
     </div>
 
@@ -256,6 +262,41 @@
         </div>
     </section>
 
+    <section id="avl-page" class="page">
+        <a href="#">← All structures</a>
+        <h2>AVL Tree <button class="info-btn" id="avl-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
+        <div class="info-panel" id="avl-info" hidden>
+            <ul>
+                <li>search, insert and delete always take O(log n) time, even when the values arrive in sorted order.</li>
+                <li>A node's balance factor is the height of its left subtree minus the height of its right subtree. An AVL tree keeps every one at -1, 0 or +1.</li>
+                <li>A rotation moves the taller side up and the shorter side down while keeping the sorted order. It only changes a few pointers, and it stops the tree from growing tall.</li>
+            </ul>
+        </div>
+        <p>A binary search tree that rotates itself whenever one side gets too tall.</p>
+        <aside class="analogy">
+            <h3>Think of it like a seesaw</h3>
+            <p>A little difference in weight between the two ends is fine. When one end gets much heavier, you shift the pivot toward the heavy side until it levels out. Every node in this tree is a small seesaw, and a rotation is how it moves its pivot.</p>
+        </aside>
+
+        <p>Nodes: <b id="avl-size">0</b> &nbsp; Height: <b id="avl-height">0</b> &nbsp; Rotations: <b id="avl-rotations">0</b></p>
+        <div class="tree-box">
+            <p class="empty" id="avl-empty">The tree is empty.</p>
+            <svg id="avl-svg" role="img" aria-label="AVL tree drawing with balance factors"></svg>
+        </div>
+        <p id="avl-msg" class="msg">Type a number and press insert, or try Insert sorted 1..7. The small number by each node is its balance factor.</p>
+        <div class="controls">
+            <input type="number" id="avl-value" placeholder="Number" aria-label="Value to insert, search for or delete">
+            <button id="avl-insert">insert</button>
+            <button id="avl-search">search</button>
+            <button id="avl-delete">delete</button>
+            <button id="avl-reset" class="ghost">Reset</button>
+        </div>
+        <div class="controls">
+            <button id="avl-random">Random fill</button>
+            <button id="avl-sorted">Insert sorted 1..7</button>
+        </div>
+    </section>
+
     <section id="sorting-page" class="page">
         <a href="#">← All structures</a>
         <h2>Sorting <button class="info-btn" id="sort-info-btn" aria-label="More info" aria-expanded="false">i</button></h2>
@@ -317,6 +358,10 @@
     <script src="js/bst.js"></script>
     <script src="js/algorithms.js"></script>
     <script src="js/sorting.js"></script>
+    <script src="js/tree-ops.js"></script>
+    <script src="js/tree-page.js"></script>
+    <script src="js/avl-logic.js"></script>
+    <script src="js/avl.js"></script>
 </body>
 
 </html>

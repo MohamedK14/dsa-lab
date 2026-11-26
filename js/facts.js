@@ -19,5 +19,7 @@ const facts = [
     "In a balanced search tree with a million values, a search needs only about 20 comparisons.",
     "Inserting already sorted values into a plain binary search tree turns it into a straight line. Self-balancing trees fix this.",
     "Insertion sort is slow on big random lists but very fast on lists that are already almost sorted.",
-    "Selection sort does many comparisons but very few swaps: at most one per item."
+    "Selection sort does many comparisons but very few swaps: at most one per item.",
+    "The AVL tree is named after its inventors, Adelson-Velsky and Landis, who published it in 1962.",
+    "An AVL tree holding a million values is never more than about 29 levels tall."
 ];

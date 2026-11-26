@@ -1,0 +1,5 @@
+/* Tree drawing styles are shared, so they live in base.css. */
+
+#avl-page .controls+.controls {
+    margin-top: 10px;
+}

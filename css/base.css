@@ -169,6 +169,11 @@ button:disabled {
     dominant-baseline: central;
 }
 
+.tree-node .tree-badge {
+    fill: #ffb454;
+    font-size: 11px;
+}
+
 .tree-node.current circle {
     fill: #6b4a1f;
     stroke: #ffb454;

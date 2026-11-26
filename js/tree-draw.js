@@ -1,4 +1,4 @@
-// Shared by the Binary Tree and Binary Search Tree pages.
+// Shared by all the tree pages.
 // A tree node looks like: { id: 1, value: 42, left: null, right: null }
 
 // Number of levels in the tree. An empty tree has height 0.
@@ -21,16 +21,22 @@ function inorderNodes(node, list) {
 // Draw a tree into an <svg>.
 // marks (optional) maps a node id to a CSS class: "current", "visited" or "found".
 //
+// options (optional):
+//   badge(node)      short text shown beside a node
+//   nodeClass(node)  extra CSS class for a node
+//
 // Layout idea: a node's column is its position in the in-order list, and its
 // row is its depth. Two nodes never share a column, so they can't overlap.
-function drawTree(svg, root, marks) {
+function drawTree(svg, root, marks, options) {
     marks = marks || {};
+    options = options || {};
     const COL = 40; // horizontal space per node
     const ROW = 58; // vertical space per level
     const R = 17;   // circle radius
 
     const order = inorderNodes(root);
-    const width = Math.max(order.length * COL, 360);
+    const padding = options.badge ? 28 : 0; // room for labels at the edges
+    const width = Math.max(order.length * COL + padding, 360);
     const height = Math.max(treeHeight(root) * ROW, ROW);
     const offset = (width - order.length * COL) / 2; // centres small trees
 
@@ -49,9 +55,14 @@ function drawTree(svg, root, marks) {
             if (child === null) return;
             lines += `<line class="tree-edge" x1="${x}" y1="${y}" x2="${pos[child.id].x}" y2="${y + ROW}"/>`;
         });
-        const cls = marks[node.id] ? ` ${marks[node.id]}` : "";
+        let cls = marks[node.id] ? ` ${marks[node.id]}` : "";
+        if (options.nodeClass) cls += ` ${options.nodeClass(node)}`;
         circles += `<g class="tree-node${cls}"><circle cx="${x}" cy="${y}" r="${R}"/>`;
-        circles += `<text x="${x}" y="${y}">${node.value}</text></g>`;
+        circles += `<text x="${x}" y="${y}">${node.value}</text>`;
+        if (options.badge) {
+            circles += `<text class="tree-badge" x="${x + R + 1}" y="${y - R + 2}">${options.badge(node)}</text>`;
+        }
+        circles += "</g>";
         walk(node.left, depth + 1);
         walk(node.right, depth + 1);
     }
