@@ -8,7 +8,7 @@ body {
 }
 
 h1,
-body>p {
+.home>p {
     text-align: center;
 }
 
@@ -62,4 +62,16 @@ button.ghost {
     padding: 4px 16px;
     margin: 12px 0;
     color: #c5cfdb;
+}
+
+.page {
+    display: none;
+}
+
+.page:target {
+    display: block;
+}
+
+body:has(.page:target) .home {
+    display: none;
 }
