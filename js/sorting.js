@@ -54,8 +54,8 @@
             const pair = step.values || [values[i], values[j]];
             return `Comparing ${pair[0]} and ${pair[1]}.`;
         }
-        if (step.type === "swap") return `Swapped: ${values[i]} is now at position ${i}, ${values[j]} at position ${j}.`;
-        if (step.type === "move") return `Wrote ${values[i]} into position ${i}.`;
+        if (step.type === "swap") return `Swapped ${values[j]} and ${values[i]}.`;
+        if (step.type === "move") return `Wrote ${values[i]} into index ${i}.`;
         if (step.type === "pivot") return `${values[i]} is the pivot. Smaller values will go to its left.`;
         if (step.at.length === 1) return `${values[i]} is in its final place.`;
         return "These values are all in their final places.";
@@ -107,7 +107,7 @@
 
         setSorting(false);
         draw();
-        msg.textContent = `Sorted with ${chosen.name.toLowerCase()}: ${comparisons} comparisons and ${moves} swaps or moves.`;
+        msg.textContent = `Done. ${chosen.name} used ${comparisons} comparisons and ${moves} swaps or moves.`;
     }
 
     // Cancel a running sort. The bars keep their current order.

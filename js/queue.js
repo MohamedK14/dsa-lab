@@ -61,7 +61,7 @@
         const ahead = queue.length - 1;
         const where = ahead === 0
             ? "It's the only one, so it's also at the front."
-            : `There ${ahead === 1 ? "is 1" : "are " + ahead} ahead of it.`;
+            : `${ahead} ${ahead === 1 ? "item is" : "items are"} ahead of it.`;
         msg.textContent = `${picked}${read.value} joined the back of the line. ${where}`;
         draw({ joined: true });
     }
