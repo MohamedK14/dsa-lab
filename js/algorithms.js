@@ -10,6 +10,8 @@
 //   "move"     a value has just been written into a position
 //   "pivot"    quick sort chose this position's value as the pivot
 //   "sorted"   these positions now hold their final values
+//
+// Merge sort steps also carry "buffer", a picture of its temporary copies.
 
 function swap(a, i, j) {
     const temp = a[i];
@@ -94,20 +96,33 @@ function* mergeSort(a, lo = 0, hi = a.length - 1) {
     const left = a.slice(lo, mid + 1);
     const right = a.slice(mid + 1, hi + 1);
     const lastMerge = lo === 0 && hi === a.length - 1;
-    let i = 0;
-    let j = 0;
-    for (let k = lo; k <= hi; k++) {
-        if (i < left.length && j < right.length) {
-            yield { type: "compare", at: [k, mid + 1 + j], values: [left[i], right[j]] };
+    let i = 0; // next unused value in left
+    let j = 0; // next unused value in right
+    // A snapshot of the copies, so the page can draw them.
+    const buffer = function () {
+        return { lo: lo, hi: hi, left: left, right: right, i: i, j: j };
+    };
+    try {
+        for (let k = lo; k <= hi; k++) {
+            if (i < left.length && j < right.length) {
+                // The two values being compared are in the copies, not in "a".
+                yield { type: "compare", at: [], values: [left[i], right[j]], buffer: buffer() };
+            }
+            if (j >= right.length || (i < left.length && left[i] <= right[j])) {
+                a[k] = left[i++];
+            } else {
+                a[k] = right[j++];
+            }
+            yield { type: "move", at: [k], buffer: buffer() };
+            // Only the final merge puts values in their final positions.
+            if (lastMerge) yield { type: "sorted", at: [k], buffer: buffer() };
         }
-        if (j >= right.length || (i < left.length && left[i] <= right[j])) {
-            a[k] = left[i++];
-        } else {
-            a[k] = right[j++];
-        }
-        yield { type: "move", at: [k] };
-        // Only the final merge puts values in their final positions.
-        if (lastMerge) yield { type: "sorted", at: [k] };
+    } finally {
+        // If the sort is stopped halfway (the page calls return() on the
+        // generator), copy the unused values back so none of them gets lost.
+        // After a complete merge there is nothing left to copy.
+        const rest = left.slice(i).concat(right.slice(j));
+        rest.forEach(function (value, n) { a[lo + i + j + n] = value; });
     }
 }
 

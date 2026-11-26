@@ -12,14 +12,41 @@
     let comparisons = 0;
     let moves = 0;
     let sorting = false;
+    let steps = null; // the generator of the sort that is running
     const runner = createRunner();
 
     const bars = document.getElementById("sort-bars");
+    const bufferBox = document.getElementById("sort-buffer-box");
+    const bufferRow = document.getElementById("sort-buffer");
     const msg = document.getElementById("sort-msg");
     const algo = document.getElementById("sort-algo");
     const countSlider = document.getElementById("sort-count");
     const speedSlider = document.getElementById("sort-speed");
     const goButton = document.getElementById("sort-go");
+
+    // Merge sort's temporary copies, drawn under the bars in matching columns.
+    function drawBuffer(step) {
+        bufferBox.hidden = algo.value !== "merge";
+        const buffer = step && step.buffer;
+        let html = "";
+        for (let p = 0; p < values.length; p++) {
+            let cell = "";
+            if (buffer && p >= buffer.lo && p <= buffer.hi) {
+                const isLeft = p - buffer.lo < buffer.left.length;
+                const list = isLeft ? buffer.left : buffer.right;
+                const n = isLeft ? p - buffer.lo : p - buffer.lo - buffer.left.length;
+                const next = isLeft ? buffer.i : buffer.j;
+                if (n >= next) { // values already written back leave a gap
+                    let cls = "copy";
+                    if (step.type === "compare" && n === next) cls += " comparing";
+                    if (!isLeft && n === 0) cls += " second-half";
+                    cell = `<span class="${cls}">${list[n]}</span>`;
+                }
+            }
+            html += `<div class="bar-slot">${cell}</div>`;
+        }
+        bufferRow.innerHTML = html;
+    }
 
     // Speed 1 waits 1 second per step, speed 10 waits 0.1 seconds.
     function delay() {
@@ -36,6 +63,10 @@
             let cls = "bar";
             if (done.has(i)) cls += " done";
             if (i === pivotAt) cls += " pivot";
+            // During a merge these bars show old values that are about to be
+            // overwritten (the real values are safe in the copies below).
+            const buffer = step && step.buffer;
+            if (buffer && i >= buffer.lo + buffer.i + buffer.j && i <= buffer.hi) cls += " stale";
             if (step && step.at.includes(i)) {
                 if (step.type === "compare" && i !== pivotAt) cls += " comparing";
                 if (step.type === "swap" || step.type === "move") cls += " moving";
@@ -44,6 +75,7 @@
             html += `<div class="bar-slot"><div class="${cls}" style="height: ${values[i]}%"><span>${values[i]}</span></div></div>`;
         }
         bars.innerHTML = html;
+        drawBuffer(step);
     }
 
     // A sentence explaining the step.
@@ -51,8 +83,8 @@
         const [i, j] = step.at;
         if (step.type === "compare") {
             // Merge sort compares values held in its copies, so it sends them along.
-            const pair = step.values || [values[i], values[j]];
-            return `Comparing ${pair[0]} and ${pair[1]}.`;
+            if (step.values) return `Comparing ${step.values[0]} and ${step.values[1]} from the temporary copies.`;
+            return `Comparing ${values[i]} and ${values[j]}.`;
         }
         if (step.type === "swap") return `Swapped ${values[j]} and ${values[i]}.`;
         if (step.type === "move") return `Wrote ${values[i]} into index ${i}.`;
@@ -89,7 +121,8 @@
         clearProgress();
         setSorting(true);
 
-        for (const step of chosen.run(values)) {
+        steps = chosen.run(values);
+        for (const step of steps) {
             if (step.type === "compare") comparisons++;
             if (step.type === "swap" || step.type === "move") moves++;
             if (step.type === "pivot") pivotAt = step.at[0];
@@ -113,22 +146,12 @@
     // Cancel a running sort. The bars keep their current order.
     function stop() {
         runner.cancel();
+        // Closing the generator lets merge sort put its copies back.
+        if (steps) steps.return();
+        steps = null;
         setSorting(false);
         pivotAt = null;
         draw();
-    }
-
-    // Merge sort stopped halfway can leave a value written twice and another
-    // missing (the missing one is still in its temporary copy). In that case we
-    // go back to the shuffled order.
-    function repairAfterStop() {
-        const same = String([...values].sort()) === String([...start].sort());
-        if (!same) {
-            values = start.slice();
-            clearProgress();
-            draw();
-        }
-        return !same;
     }
 
     function shuffle() {
@@ -162,10 +185,9 @@
             return;
         }
         stop();
-        msg.textContent = repairAfterStop()
-            ? "Stopped. Merge sort was halfway through a merge, so the bars went back to the shuffled order."
-            : "Stopped. Press Sort to sort these bars, or Reset for the shuffled order.";
+        msg.textContent = "Stopped. Press Sort to sort these bars, or Reset for the shuffled order.";
     };
+    algo.onchange = function () { draw(); };
     document.getElementById("sort-shuffle").onclick = shuffle;
     document.getElementById("sort-reset").onclick = reset;
     countSlider.oninput = function () {
@@ -179,7 +201,6 @@
     onLeavePage("sorting-page", function () {
         if (sorting) {
             stop();
-            repairAfterStop();
             msg.textContent = "Sorting cancelled because you left the page.";
         }
     });
