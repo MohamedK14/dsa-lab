@@ -121,7 +121,7 @@
             msg.textContent = "The list is empty, so there is nothing to search.";
             return;
         }
-        if (input.value.trim() === "") {
+        if (input.value.trim() === "" && !input.validity.badInput) {
             msg.textContent = "Type the number you want to search for, then press search.";
             return;
         }

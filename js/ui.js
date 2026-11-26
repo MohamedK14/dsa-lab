@@ -14,6 +14,11 @@ function setupInfo(buttonId, panelId) {
 // Empty box: pick a random number from 1 to 99 (random is true).
 // Anything that is not a whole number from -999 to 999: return null.
 function readNumber(input) {
+    // A number box reports an empty value for things like "-" or "1e", so
+    // check for that first. Otherwise it would look like the box was empty.
+    if (input.validity.badInput) {
+        return null;
+    }
     const raw = input.value.trim();
     if (raw === "") {
         return { value: Math.floor(Math.random() * 99) + 1, random: true };

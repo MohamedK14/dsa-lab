@@ -67,7 +67,7 @@
             msg.textContent = `The tree is empty, so there is nothing to ${action}.`;
             return null;
         }
-        if (input.value.trim() === "") {
+        if (input.value.trim() === "" && !input.validity.badInput) {
             msg.textContent = `Type the number you want to ${action}, then press ${action}.`;
             return null;
         }
